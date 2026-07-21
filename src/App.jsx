@@ -1,11 +1,16 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MovieList } from './components/MovieList';
 import { MovieForm } from './components/MovieForm';
 import { movies as INITIAL_MOVIES } from './data/movies';
+import { MovieFilter } from './components/MovieFilter';
 
 export function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES);
+  const [genreFilter, setGenreFilter] = useState('');
+  const filteredMovies = movies.filter((movie) =>
+    movie.genre.toLowerCase().includes(genreFilter.toLowerCase()),
+  );
 
   const handleAddMovie = (movieData) => {
     const newMovie = {
@@ -17,6 +22,10 @@ export function App() {
 
   const handleDeleteMovie = (id) => {
     setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+  };
+
+  const handleChangeGenre = (newGenre) => {
+    setGenreFilter(newGenre);
   };
 
   return (
@@ -32,7 +41,14 @@ export function App() {
       <main className='main'>
         <div className='container'>
           <MovieForm onAddMovie={handleAddMovie} />
-          <MovieList movies={movies} onDeleteMovie={handleDeleteMovie} />
+          <MovieFilter
+            genreFilter={genreFilter}
+            onChangeGenre={handleChangeGenre}
+          />
+          <MovieList
+            movies={filteredMovies}
+            onDeleteMovie={handleDeleteMovie}
+          />
         </div>
       </main>
     </div>

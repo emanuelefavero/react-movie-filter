@@ -70,7 +70,7 @@ export const MovieForm = ({ onAddMovie }) => {
       aria-labelledby='movie-form-title'
       noValidate
     >
-      <h2 className='form-title' id='movie-form-title'>
+      <h2 className='form-title text-xl' id='movie-form-title'>
         Aggiungi un nuovo film
       </h2>
 
