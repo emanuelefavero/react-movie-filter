@@ -8,9 +8,7 @@ import { MovieFilter } from './components/MovieFilter';
 export function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES);
   const [genreFilter, setGenreFilter] = useState('');
-  const filteredMovies = movies.filter((movie) =>
-    movie.genre.toLowerCase().includes(genreFilter.toLowerCase()),
-  );
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   const handleAddMovie = (movieData) => {
     const newMovie = {
@@ -27,6 +25,15 @@ export function App() {
   const handleChangeGenre = (newGenre) => {
     setGenreFilter(newGenre);
   };
+
+  // Update the filteredMovies state whenever movies or genreFilter changes
+  useEffect(() => {
+    setFilteredMovies(
+      movies.filter((movie) =>
+        movie.genre.toLowerCase().includes(genreFilter.toLowerCase()),
+      ),
+    );
+  }, [movies, genreFilter]);
 
   return (
     <div className='app'>
