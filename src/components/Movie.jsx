@@ -1,9 +1,10 @@
 import './Movie.css';
 import { Trash2 } from 'lucide-react';
 import { Button } from './ui/Button';
+import { Card } from './ui/Card';
 
 export const Movie = ({ movie, onDeleteMovie }) => (
-  <article className='movie'>
+  <Card as='article' className='movie'>
     <div className='content'>
       <h2>{movie.title}</h2>
       <p className='genre text-sm'>{movie.genre}</p>
@@ -16,5 +17,5 @@ export const Movie = ({ movie, onDeleteMovie }) => (
     >
       <Trash2 size={18} aria-hidden='true' />
     </Button>
-  </article>
+  </Card>
 );

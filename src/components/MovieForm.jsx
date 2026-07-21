@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { movieGenres } from '@/data/movies';
+import { Card } from './ui/Card';
 
 const INITIAL_FORM_DATA = {
   title: '',
@@ -62,7 +63,8 @@ export const MovieForm = ({ onAddMovie }) => {
   };
 
   return (
-    <form
+    <Card
+      as='form'
       className='movie-form'
       onSubmit={handleSubmit}
       aria-labelledby='movie-form-title'
@@ -128,6 +130,6 @@ export const MovieForm = ({ onAddMovie }) => {
           Aggiungi film
         </Button>
       </div>
-    </form>
+    </Card>
   );
 };
