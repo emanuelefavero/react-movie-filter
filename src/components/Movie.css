@@ -1,0 +1,39 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+  min-height: 9rem;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  animation: fade-in 320ms ease-in both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .genre {
+    color: var(--foreground-muted);
+  }
+
+  .delete-button {
+    align-self: flex-end;
+    padding: 0.5rem;
+  }
+}
