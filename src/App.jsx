@@ -71,6 +71,14 @@ export function App() {
           />
         </div>
       </main>
+
+      <footer className='footer'>
+        <div className='container'>
+          <p className='text-sm text-center'>
+            &copy; {new Date().getFullYear()} Emanuele Favero
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
