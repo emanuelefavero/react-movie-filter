@@ -8,10 +8,22 @@
   line-height: 1;
   transition:
     background-color 150ms ease,
-    opacity 150ms ease;
+    opacity 150ms ease,
+    transform 150ms ease,
+    filter 150ms ease;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &:active {
+    transform: translateY(1px) scale(0.98);
+    filter: brightness(0.9);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   &.primary {
@@ -20,8 +32,19 @@
   }
 
   &.danger {
-    background-color: var(--danger);
-    color: var(--background);
+    background-color: var(--background);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+
+    &:hover {
+      background-color: var(--danger);
+      color: var(--background);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--danger);
+      outline-offset: 2px;
+    }
   }
 
   &.ghost {

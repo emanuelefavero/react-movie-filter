@@ -1,14 +1,14 @@
 /* TOKENS */
 :root {
-  --foreground: #202020;
-  --foreground-muted: #6e6e6e;
+  --foreground: #0a2540;
+  --foreground-muted: #717578;
   --background: #fff;
-  --background-secondary: #f6f6f4;
-  --primary: #202020;
+  --background-secondary: #f6f8fc;
+  --primary: #5b69ff;
   --primary-foreground: #fff;
   --warning: #ffc109;
   --danger: #c10007;
-  --border: #dededb;
+  --border: #dbdcde;
   --selection: rgb(13 109 253 / 0.3);
   --sans: system-ui, sans-serif;
 }
@@ -32,7 +32,7 @@
 
 :focus-visible {
   outline: 2px solid var(--primary);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 button {
