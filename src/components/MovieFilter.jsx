@@ -2,6 +2,7 @@ import { movieGenres } from '@/data/movies';
 import { Card } from './ui/Card';
 import './MovieFilter.css';
 import { Input } from './ui/Input';
+import { Select } from './ui/Select';
 
 export const MovieFilter = ({ filters, onFilterChange }) => {
   const handleSubmit = (e) => e.preventDefault();
@@ -31,7 +32,7 @@ export const MovieFilter = ({ filters, onFilterChange }) => {
 
       <div className='form-group'>
         <label htmlFor='movie-filter-genre'>Genere</label>
-        <select
+        <Select
           name='genre'
           id='movie-filter-genre'
           value={filters.genre}
@@ -44,7 +45,7 @@ export const MovieFilter = ({ filters, onFilterChange }) => {
               {genre.name}
             </option>
           ))}
-        </select>
+        </Select>
       </div>
     </Card>
   );

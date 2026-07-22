@@ -2,6 +2,7 @@ import './MovieForm.css';
 import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
+import { Select } from './ui/Select';
 import { movieGenres } from '@/data/movies';
 import { Card } from './ui/Card';
 
@@ -97,7 +98,7 @@ export const MovieForm = ({ onAddMovie }) => {
 
       <div className='form-group'>
         <label htmlFor='movie-form-genre'>Genere</label>
-        <select
+        <Select
           name='genre'
           id='movie-form-genre'
           value={formData.genre}
@@ -115,7 +116,7 @@ export const MovieForm = ({ onAddMovie }) => {
               {genre.name}
             </option>
           ))}
-        </select>
+        </Select>
 
         {errors.genre && (
           <p className='form-error' id='genre-error'>
