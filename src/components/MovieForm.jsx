@@ -67,10 +67,9 @@ export const MovieForm = ({ onAddMovie }) => {
       as='form'
       className='movie-form'
       onSubmit={handleSubmit}
-      aria-labelledby='movie-form-title'
-      noValidate
+      aria-labelledby='movie-form-heading'
     >
-      <h2 className='form-title text-xl' id='movie-form-title'>
+      <h2 className='form-title text-xl' id='movie-form-heading'>
         Aggiungi un nuovo film
       </h2>
 

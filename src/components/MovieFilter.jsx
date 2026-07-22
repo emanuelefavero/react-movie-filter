@@ -1,8 +1,9 @@
 import { movieGenres } from '@/data/movies';
 import { Card } from './ui/Card';
 import './MovieFilter.css';
+import { Input } from './ui/Input';
 
-export const MovieFilter = ({ genreFilter, onChangeGenre }) => {
+export const MovieFilter = ({ filters, onFilterChange }) => {
   const handleSubmit = (e) => e.preventDefault();
 
   return (
@@ -10,20 +11,31 @@ export const MovieFilter = ({ genreFilter, onChangeGenre }) => {
       as='form'
       className='movie-filter'
       onSubmit={handleSubmit}
-      aria-labelledby='movie-filter-title'
+      aria-labelledby='movie-filter-heading'
       noValidate
     >
-      <h2 className='form-title text-xl' id='movie-filter-title'>
+      <h2 className='form-title text-xl' id='movie-filter-heading'>
         Filtra i film
       </h2>
+
+      <div className='form-group'>
+        <label htmlFor='movie-filter-title'>Titolo</label>
+        <Input
+          name='title'
+          id='movie-filter-title'
+          placeholder='Cerca per titolo'
+          value={filters.title}
+          onChange={onFilterChange}
+        />
+      </div>
 
       <div className='form-group'>
         <label htmlFor='movie-filter-genre'>Genere</label>
         <select
           name='genre'
           id='movie-filter-genre'
-          value={genreFilter}
-          onChange={(e) => onChangeGenre(e.target.value)}
+          value={filters.genre}
+          onChange={onFilterChange}
         >
           <option value=''>Tutti i generi</option>
 

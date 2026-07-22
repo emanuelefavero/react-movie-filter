@@ -123,6 +123,10 @@ body {
   text-transform: uppercase;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Typography: Font Size, Line Height, Letter Spacing */
 .text-xs {
   font-size: 0.8rem;

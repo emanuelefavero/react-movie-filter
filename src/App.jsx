@@ -5,9 +5,14 @@ import { MovieForm } from './components/MovieForm';
 import { movies as INITIAL_MOVIES } from './data/movies';
 import { MovieFilter } from './components/MovieFilter';
 
+const INITIAL_FILTERS = {
+  title: '',
+  genre: '',
+};
+
 export function App() {
   const [movies, setMovies] = useState(INITIAL_MOVIES);
-  const [genreFilter, setGenreFilter] = useState('');
+  const [filters, setFilters] = useState(INITIAL_FILTERS);
   const [filteredMovies, setFilteredMovies] = useState(movies);
 
   const handleAddMovie = (movieData) => {
@@ -22,18 +27,29 @@ export function App() {
     setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
   };
 
-  const handleChangeGenre = (newGenre) => {
-    setGenreFilter(newGenre);
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
   };
 
-  // Update the filteredMovies state whenever movies or genreFilter changes
   useEffect(() => {
-    setFilteredMovies(
-      movies.filter((movie) =>
-        movie.genre.toLowerCase().includes(genreFilter.toLowerCase()),
-      ),
-    );
-  }, [movies, genreFilter]);
+    const filterTitle = filters.title.trim().toLowerCase();
+
+    const nextFilteredMovies = movies.filter((movie) => {
+      const movieTitle = movie.title.trim().toLowerCase();
+
+      const matchesTitle = movieTitle.includes(filterTitle);
+      const matchesGenre = !filters.genre || movie.genre === filters.genre;
+
+      return matchesTitle && matchesGenre;
+    });
+
+    setFilteredMovies(nextFilteredMovies);
+  }, [movies, filters]);
 
   return (
     <div className='app'>
@@ -48,10 +64,7 @@ export function App() {
       <main className='main'>
         <div className='container'>
           <MovieForm onAddMovie={handleAddMovie} />
-          <MovieFilter
-            genreFilter={genreFilter}
-            onChangeGenre={handleChangeGenre}
-          />
+          <MovieFilter filters={filters} onFilterChange={handleFilterChange} />
           <MovieList
             movies={filteredMovies}
             onDeleteMovie={handleDeleteMovie}
