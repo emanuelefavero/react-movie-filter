@@ -9,8 +9,19 @@
   --warning: #ffc109;
   --danger: #c10007;
   --border: #dbdcde;
-  --selection: rgb(13 109 253 / 0.3);
+  --selection: rgb(25 13 253 / 0.3);
   --sans: system-ui, sans-serif;
+
+  @media (prefers-color-scheme: dark) {
+    --foreground: #fff;
+    --foreground-muted: #9296a0;
+    --background: #0d1016;
+    --background-secondary: #07080d;
+    --warning: #bf9002;
+    --danger: #f3474d;
+    --border: #2f333d;
+    --selection: rgb(86 78 255 / 0.3);
+  }
 }
 
 /* RESET */
@@ -226,6 +237,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
